@@ -1,6 +1,6 @@
 cask "openfortimac" do
-  version "1.3.1"
-  sha256 "0104dabad425c9cfe8ba626025004568be2b74545d350d21e3d848b25a6ef7a8"
+  version "1.3.2"
+  sha256 "6d7bf8ca564c719739db31eca91e2aad827687a4c86ad97781681c9ca5dbfd00"
 
   url "https://github.com/rempairamore/OpenFortiMac/releases/download/v#{version}/OpenFortiMac_v#{version}.dmg"
   name "OpenFortiMac"
