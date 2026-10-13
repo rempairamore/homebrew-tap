@@ -18,7 +18,9 @@ brew upgrade --cask openfortimac
 
 ## Releasing a new version
 
-1. In the OpenFortiMac repo run `./build_dmg.sh`: it prints the `version` and `sha256` lines.
-2. Upload `OpenFortiMac_v<version>.dmg` to the GitHub release `v<version>`.
-3. Paste the two lines into `Casks/openfortimac.rb`, then run `brew style rempairamore/tap` and `brew audit --cask --online rempairamore/tap/openfortimac`.
-4. Commit and push.
+Releases are automated by the [Release workflow](https://github.com/rempairamore/OpenFortiMac/blob/main/.github/workflows/release.yml) in the OpenFortiMac repo:
+
+1. Pushing a `vX.Y.Z` tag there builds and attests the DMG, publishes the GitHub release and opens a pull request here that updates `version` and `sha256` in `Casks/openfortimac.rb`. The pull request is already checked with `brew style` and `brew audit --cask --strict --online`.
+2. Merge the pull request to ship the update to `brew upgrade` users.
+
+Manual fallback (only if the workflow cannot open the pull request): copy the SHA-256 from the release notes into `Casks/openfortimac.rb` together with the new `version`, run the two checks above and push.
