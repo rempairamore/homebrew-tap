@@ -13,7 +13,7 @@ openfortivpn is installed automatically as a dependency.
 ## Update
 
 ```bash
-brew upgrade --cask openfortimac
+brew upgrade --cask rempairamore/tap/openfortimac
 ```
 
 ## Releasing a new version
