@@ -17,10 +17,11 @@ cask "openfortimac" do
 
   app "OpenFortiMac.app"
 
-  uninstall quit:   "rempairamore.OpenFortiMac",
-            delete: "/etc/sudoers.d/openfortimac"
+  uninstall quit: "rempairamore.OpenFortiMac"
 
-  zap trash: "~/Library/Application Support/OpenFortiMac"
+  # Homebrew also runs `uninstall` when upgrading, so the sudo rule is only removed by `zap`
+  zap delete: "/etc/sudoers.d/openfortimac",
+      trash:  "~/Library/Application Support/OpenFortiMac"
 
   caveats <<~EOS
     OpenFortiMac is not notarized by Apple. On first launch macOS blocks it:
@@ -28,5 +29,9 @@ cask "openfortimac" do
 
     Then open OpenFortiMac Settings > Permission
     and click "Set Up..." so openfortivpn can start without a password prompt.
+
+    The sudo rule stays when OpenFortiMac is updated or uninstalled.
+    Remove it from Settings > Permission > Remove, or uninstall with:
+      brew uninstall --zap --cask rempairamore/tap/openfortimac
   EOS
 end
